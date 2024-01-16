@@ -1,1 +1,73 @@
+#Commercialisation et prévisibilité du succès de produits#
 
+La commercialisation de produits alimentaires est un problème complexe. Même si une part du succès initial
+d’un produit est lié au marketing, un mauvais produit ne passe normalement pas le test du temps.
+Vous faites partie d’une entreprise qui offre ses services pour l’évaluation et la prévision du succès de produits
+alimentaires étant donné leurs caractéristiques. Votre entreprise ne s’intéresse pas à l’aspect marketing. Elle
+7
+met plutôt l’accent sur les caractéristiques du produit par rapport aux produits du même genre. Votre dernier
+gros contrat est dans le domaine vinicole.
+Contrat: Raisin Cola (R Cola), une compagnie de boissons gazeuses, souhaite se lancer dans la production de
+vin après avoir acheté plusieurs producteurs. R Cola n’y connaît rien en vins, mais elle aimerait développer
+une nouvelle gamme de produits et prévoir leurs succès à long terme.
+Données: Vous avez accès à des données historiques sur le succès et l’échec à long terme de la commercialisation
+de plusieurs vins (fichier Q2_data.csv). Dans les données, on vous indique si oui ou non un vin a survécu sur
+le marché durant plus de 5 ans (colonne Class). Les autres colonnes (précédées de in) sont les caractéristiques
+des vins suivantes (dans l’ordre):  
+• couleur  
+• tanin  
+• densité optique de 420 nm  
+• densité optique de 520 nm  
+• densité optique de 620 nm  
+• acidité de type fixe  
+• acidité de type volatile  
+• acidité de type citrique  
+• sucre  
+• chlorures  
+• dioxyde de soufre libre  
+• densité de dioxyde de soufre totale  
+• densité  
+• pH  
+• sulfates  
+• teneur en alcool  
+• prix moyen ajusté en dollars canadien  
+2.1 Préparer les données  
+Chargez les données et préparez-les pour l’apprentissage d’un modèle de classification:  
+• Vous devez partitionner le jeu de données en ensemble d’entraînement et de tests.
+Vous pouvez aussi retirer certaines colonnes des entrées. Rappelez-vous que d’autres opérations de prétraitement peuvent être faites lors de l’appel à la fonction train.
+Décrivez sommairement les étapes de votre démarche.
+N’oubliez pas les bonnes pratiques:
+• Vérifiez les valeurs manquantes;
+• Vérifiez quelques lignes du jeu de données;
+• Vérifiez si les types de colonnes sont corrects.
+8
+2.2 Entraînement
+Entraînez deux modèles pour la prédiction du succès des vins. Vous devez absolument entraîner un arbre
+de décision (decision tree). Pour ce modèle, fixez le paramètre method à rpart ou rpart2, p. ex., method =
+'rpart2', lors de l’appel à la méthode train. L’autre modèle est au choix, mais il doit être différent d’un
+arbre de décision.
+Nous en demandons au moins deux, mais vous êtes libre de tester autant d’algorithmes d’apprentissage que
+vous le souhaitez.
+Vous devez créer un objet avec trainControl pour vous permettre de spécifier les paramètres de la phase
+d’entraînement. Créez aussi, pour chaque modèle à entraîner, une grille de tuples pour tester plusieurs
+paramètres de l’algorithme d’apprentissage.
+Après l’entraînement, vous devriez sauvegarder chaque modèle au format RDS. Si le fichier RDS correspondant
+à un modèle donné est présent, l’entraînement ne devrait pas se réexécuter et le modèle devrait être directement
+chargé à partir du RDS. L’entraînement ne devrait être exécuté que si le fichier RDS est absent.
+Décrivez sommairement les étapes de votre démarche et les méthodes utilisées.
+2.3 Afficher l’arbre de décision appris
+Vous avez entraîné un arbre de décision. Utilisez la librairie rpart.plot pour afficher l’arbre appris (fonction
+prp).
+2.4 Évaluation de l’entraînement pour chacun des modèles
+Affichez les meilleurs paramètres trouvés via l’entraînement pour chaque modèle.
+Vérifiez la performance des modèles, pour au moins un des différents paramètres utilisés lors de l’entraînement,
+à l’aide de visualisations. La performance peut être visualisée en termes du critère de votre choix.
+Décrivez sommairement les étapes de votre démarche.
+2.5 Comparaison des modèles
+Comparez vos modèles.
+Le critère pour la comparaison de modèles est au choix, toutefois, vous devez choisir un critère bien fondé et
+qui a un sens en classification.
+Produisez, pour chaque modèle, une courbe ROC et affichez l’aire sous la courbe ROC. Je vous conseille le
+package pROC pour calculer les valeurs de courbes ROC à partir des probabilités d’appartenance aux classes.
+Ensuite, je conseille d’utiliser ggplot pour tracer vos courbes.
+Décrivez brièvement les étapes de votre démarche. Indiquez clairement quel est le meilleur modèle
